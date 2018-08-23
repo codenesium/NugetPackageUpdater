@@ -15,7 +15,7 @@ and hintNeedle for each of your dlls.
 
 ![Screenshot](readme/app.PNG)
 
-pacakges.config
+packages.config
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <packages>
