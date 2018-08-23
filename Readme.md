@@ -13,7 +13,7 @@ This tool currently only support bumping the version on a package. If your packa
 and hintNeedle for each of your dlls.
 
 
-![Screenshot](readme/app.png)
+![Screenshot](readme/app.PNG)
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
