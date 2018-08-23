@@ -15,6 +15,7 @@ and hintNeedle for each of your dlls.
 
 ![Screenshot](readme/app.PNG)
 
+pacakges.config
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <packages>
@@ -29,6 +30,10 @@ becomes
 </packages>
 ```
 
+
+
+
+*.csproj
 ```
 <Reference Include="NLog, Version=4.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
   <HintPath>..\packages\NLog.4.0.0\lib\net45\NLog.dll</HintPath>
