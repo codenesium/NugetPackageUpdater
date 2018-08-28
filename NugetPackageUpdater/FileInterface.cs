@@ -14,7 +14,7 @@ namespace NugetPackageUpdater
             return Directory.GetFiles(rootDirectory, search, SearchOption.AllDirectories).ToList();
         }
 
-        public List<string> ReadFile(string path)
+        public List<string> ReadFileLines(string path)
         {
             return File.ReadAllLines(path).ToList();
         }
@@ -22,6 +22,27 @@ namespace NugetPackageUpdater
         public void WriteFile(string path, List<String> lines)
         {
             File.WriteAllText(path, string.Join(Environment.NewLine,lines.ToArray()).TrimEnd());
+        }
+
+
+        public void WriteFile(string path, string contents)
+        {
+            File.WriteAllText(path, contents);
+        }
+
+        public string ReadFile(string path)
+        {
+            return File.ReadAllText(path);
+        }
+
+        public bool FileExists(string path)
+        {
+            return File.Exists(path);
+        }
+
+        public void CreateDirectory(string path)
+        {
+            Directory.CreateDirectory(path);
         }
     }
 }

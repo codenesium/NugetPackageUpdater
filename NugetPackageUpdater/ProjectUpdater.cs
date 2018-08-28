@@ -14,24 +14,24 @@ namespace NugetPackageUpdater
             this.fileInterface = fileInterface;
         }
 
-        public void ProcessFiles(string rooDirectory, string packageName, string packageVersion, string hintNeedle, string hintReplacement, string extension = "*.csproj")
+        public void ProcessFiles(string rooDirectory, string packageName, string packageVersion, List<string> hintNeedles, string hintReplacement, string extension = "*.csproj")
         {
             List<string> files = this.fileInterface.GetFiles(rooDirectory, extension);
             for(int i=0; i < files.Count; i++)
             {
-                List<string> lines = ProcessFile(files[i], packageName, packageVersion, hintNeedle, hintReplacement);
+                List<string> lines = ProcessFile(files[i], packageName, packageVersion, hintNeedles, hintReplacement);
                 this.fileInterface.WriteFile(files[i], lines);
             }
         }
 
-        public List<string> ProcessFile(string path, string packageName, string packageVersion, string hintNeedle, string hintReplacement)
+        public List<string> ProcessFile(string path, string packageName, string packageVersion, List<string> hintNeedles, string hintReplacement)
         {
-            List<string> contents = this.fileInterface.ReadFile(path);
+            List<string> contents = this.fileInterface.ReadFileLines(path);
 
-            return this.ProcessFileContents(contents, packageName, packageVersion, hintNeedle, hintReplacement);
+            return this.ProcessFileContents(contents, packageName, packageVersion, hintNeedles, hintReplacement);
         }
 
-        public List<string> ProcessFileContents(List<string> lines, string packageName, string packageVersion, string hintNeedle, string hintReplacement)
+        public List<string> ProcessFileContents(List<string> lines, string packageName, string packageVersion, List<string> hintNeedles, string hintReplacement)
         {
             for (int i = 0; i < lines.Count; i++)
             {
@@ -40,7 +40,7 @@ namespace NugetPackageUpdater
 
             for (int i = 0; i < lines.Count; i++)
             {
-                lines[i] = this.ProcessHint(lines[i], hintNeedle, hintReplacement);
+                lines[i] = this.ProcessHint(lines[i], hintNeedles, hintReplacement);
             }
 
             return lines;
@@ -62,8 +62,9 @@ namespace NugetPackageUpdater
 
                 string currentVersion = line.Substring(versionEqualsStartIndex + versionNeedle.Length, versionEqualsEndIndex - versionEqualsStartIndex - versionNeedle.Length);
 
-                return line.Replace(currentVersion, packageVersion);
+                string replacedLine = line.Substring(0, versionEqualsStartIndex -1) + line.Substring(versionEqualsEndIndex + 1);
 
+                return replacedLine;
             }
             else
             {
@@ -71,10 +72,25 @@ namespace NugetPackageUpdater
             }
         }
 
-        public string ProcessHint(string line, string hintNeedle, string hintReplacement)
+        public string ProcessHint(string line, List<string> hintNeedles, string hintReplacement)
         {
-            if (line.Contains("HintPath") && line.Contains(hintNeedle))
+            if (line.ToUpper().Contains("HINTPATH"))
             {
+
+                bool found = false;
+                hintNeedles.ForEach(x =>
+                {
+                    if(line.ToUpper().Contains(x.ToUpper()))
+                    {
+                        found = true;
+                    }
+                });
+
+                if(!found)
+                {
+                    return line;
+                }
+
                 string needle = "packages\\";
                 int startIndex = line.IndexOf(needle);
                 if (startIndex == -1)

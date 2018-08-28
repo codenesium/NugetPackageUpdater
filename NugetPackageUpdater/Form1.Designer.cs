@@ -42,11 +42,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxHintReplacement = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.buttonSelectTemplate = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // buttonProcess
             // 
-            this.buttonProcess.Location = new System.Drawing.Point(381, 383);
+            this.buttonProcess.Location = new System.Drawing.Point(383, 492);
             this.buttonProcess.Name = "buttonProcess";
             this.buttonProcess.Size = new System.Drawing.Size(75, 23);
             this.buttonProcess.TabIndex = 1;
@@ -118,7 +120,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 238);
+            this.label3.Location = new System.Drawing.Point(18, 231);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 10;
@@ -126,16 +128,17 @@
             // 
             // textBoxHintNeedle
             // 
-            this.textBoxHintNeedle.Location = new System.Drawing.Point(21, 254);
+            this.textBoxHintNeedle.Location = new System.Drawing.Point(21, 247);
+            this.textBoxHintNeedle.Multiline = true;
             this.textBoxHintNeedle.Name = "textBoxHintNeedle";
-            this.textBoxHintNeedle.Size = new System.Drawing.Size(146, 20);
+            this.textBoxHintNeedle.Size = new System.Drawing.Size(146, 99);
             this.textBoxHintNeedle.TabIndex = 9;
             this.textBoxHintNeedle.Text = "NLog.dll";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 295);
+            this.label4.Location = new System.Drawing.Point(18, 349);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 12;
@@ -143,7 +146,7 @@
             // 
             // textBoxHintReplacement
             // 
-            this.textBoxHintReplacement.Location = new System.Drawing.Point(21, 311);
+            this.textBoxHintReplacement.Location = new System.Drawing.Point(21, 365);
             this.textBoxHintReplacement.Name = "textBoxHintReplacement";
             this.textBoxHintReplacement.Size = new System.Drawing.Size(146, 20);
             this.textBoxHintReplacement.TabIndex = 11;
@@ -154,17 +157,32 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(15, 349);
+            this.label5.Location = new System.Drawing.Point(17, 458);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(451, 20);
             this.label5.TabIndex = 13;
             this.label5.Text = "Make sure your repository is in a clean state before processing.";
             // 
+            // buttonSelectTemplate
+            // 
+            this.buttonSelectTemplate.Location = new System.Drawing.Point(173, 140);
+            this.buttonSelectTemplate.Name = "buttonSelectTemplate";
+            this.buttonSelectTemplate.Size = new System.Drawing.Size(109, 23);
+            this.buttonSelectTemplate.TabIndex = 14;
+            this.buttonSelectTemplate.Text = "SelectTemplate";
+            this.buttonSelectTemplate.UseVisualStyleBackColor = true;
+            this.buttonSelectTemplate.Click += new System.EventHandler(this.buttonSelectTemplate_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 429);
+            this.ClientSize = new System.Drawing.Size(479, 530);
+            this.Controls.Add(this.buttonSelectTemplate);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxHintReplacement);
@@ -200,6 +218,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxHintReplacement;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button buttonSelectTemplate;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

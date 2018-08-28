@@ -26,7 +26,7 @@ namespace NugetPackageUpdater
 
         public List<string> ProcessFile(string path, string packageName, string packageVersion)
         {
-            List<string> contents = this.fileInterface.ReadFile(path);
+            List<string> contents = this.fileInterface.ReadFileLines(path);
             return ProcessFileContents(contents, packageName, packageVersion);
         }
 
