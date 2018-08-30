@@ -20,7 +20,9 @@ The Hint Needle supports multiple dlls. This is for packages that have multiple 
 
 
 Package Name is the nuget package name -> NLog
+
 Package Version is the nuget package version -> 1.0.0
+
 Hint Needle is the text between packages and lib in the hint. In this example NLog.dll is the hint needle. It's just something that tells us this is a line we need to process.
 
 ```
