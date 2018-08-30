@@ -12,6 +12,11 @@ This tool does not add or remove dlls. If your package upgrade adds a dependency
 This tool currently only supports bumping the version on a package. If your package contains more than one dll you can run it multiple times and just change the hintString
 and hintNeedle for each of your dlls.
 
+Note that this tool removes the version from the reference. This is because I need to support an app that copies files over other projects and assembly binding errors are annoying.
+
+When a project is executed a json file is written to a templates folder where the aps is running from. These json files can be loaded to save time.
+
+The Hint Needle supports multiple dlls. This is for packages that have multiple dlls. 
 
 ![Screenshot](readme/app.PNG)
 
@@ -44,7 +49,7 @@ becomes
 becomes 
 
 ```
-<Reference Include="NLog, Version=9.9.9, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+<Reference Include="NLog, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
   <HintPath>..\packages\NLog.9.9.9\lib\net45\NLog.dll</HintPath>
   <Private>True</Private>
 </Reference>
