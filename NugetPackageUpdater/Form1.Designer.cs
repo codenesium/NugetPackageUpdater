@@ -131,9 +131,10 @@
             this.textBoxHintNeedle.Location = new System.Drawing.Point(21, 247);
             this.textBoxHintNeedle.Multiline = true;
             this.textBoxHintNeedle.Name = "textBoxHintNeedle";
-            this.textBoxHintNeedle.Size = new System.Drawing.Size(146, 99);
+            this.textBoxHintNeedle.Size = new System.Drawing.Size(435, 99);
             this.textBoxHintNeedle.TabIndex = 9;
             this.textBoxHintNeedle.Text = "NLog.dll";
+            this.textBoxHintNeedle.WordWrap = false;
             // 
             // label4
             // 
