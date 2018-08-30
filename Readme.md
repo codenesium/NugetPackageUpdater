@@ -18,6 +18,20 @@ When a project is executed a json file is written to a templates folder where th
 
 The Hint Needle supports multiple dlls. This is for packages that have multiple dlls. 
 
+
+Package Name is the nuget package name -> NLog
+Package Version is the nuget package version -> 1.0.0
+Hint Needle is the text between packages and lib in the hint. In this example NLog.dll is the hint needle. It's just something that tells us this is a line we need to process.
+
+```
+  <HintPath>..\packages\NLog.4.0.0\lib\net45\NLog.dll</HintPath>
+```
+Hint Replacement is the value between packages\ and \lib. In this example it would be NLog.4.0.0. 
+
+```
+  <HintPath>..\packages\NLog.4.0.0\lib\net45\NLog.dll</HintPath>
+```
+
 ![Screenshot](readme/app.PNG)
 
 packages.config
