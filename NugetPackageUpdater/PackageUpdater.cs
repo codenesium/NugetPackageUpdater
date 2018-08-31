@@ -42,7 +42,7 @@ namespace NugetPackageUpdater
 
         public string ProcessLine(string line, string packageName, string packageVersion)
         {
-            if (line.Contains(packageName))
+            if (line.Contains($@"""{packageName}"""))
             {
                 string versionNeedle = @"version=""";
                 int versionEqualsStartIndex = line.IndexOf(versionNeedle);

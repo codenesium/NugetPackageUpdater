@@ -58,5 +58,27 @@ namespace NugetPackageUpdater.Tests
              <package id =""NLog"" version=""9.9.9"" targetFramework=""net461"" />
            </packages>");
         }
+
+        [TestMethod]
+        public void PackageConfigProcessFile_MakeSurCompletePackageNameIsMatched()
+        {
+            string contents = @"<?xml version=""1.0"" encoding=""utf-8""?>
+           <packages>
+             <package id =""NLog.Config"" version=""4.5.3"" targetFramework=""net461"" />
+           </packages>";
+
+            List<string> lines = contents.Split(new[] { Environment.NewLine }, StringSplitOptions.None).ToList();
+
+            var packageUpdater = new PackageUpdater(new FileInterface());
+
+            List<string> result = packageUpdater.ProcessFileContents(lines, "NLog", "9.9.9");
+
+            string joined = string.Join(Environment.NewLine, result.ToArray());
+
+            joined.Should().Be(@"<?xml version=""1.0"" encoding=""utf-8""?>
+           <packages>
+             <package id =""NLog.Config"" version=""4.5.3"" targetFramework=""net461"" />
+           </packages>");
+        }
     }
 }
